@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="rtl">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -25,26 +25,32 @@
             </div>
             <div class="form">
                 <form action="">
+                    <h3>أدخل رمز التحقق</h3>
+                    <p>تم إرسال رمز مكون من 4 أرقام إلى بريدك الإلكتروني</p>
                     <div class="digits">
-                        <input type="number" min="0" max="9" value="" placeholder="-" class="input">
-                        <input type="number" min="0" max="9" value="" placeholder="-" class="input">
-                        <input type="number" min="0" max="9" value="" placeholder="-" class="input">
-                        <input type="number" min="0" max="9" value="" placeholder="-" class="input">
+                        <input type="text" value="" placeholder="-" class="opt-input" maxlength="1" autofocus>
+                        <input type="text" value="" placeholder="-" class="opt-input" maxlength="1">
+                        <input type="text" value="" placeholder="-" class="opt-input" maxlength="1">
+                        <input type="text" value="" placeholder="-" class="opt-input" maxlength="1">
                     </div>
-                    <a href="./main.html" class="login">Submit</a>
+                    <a href="./main.html" class="login">إرسال</a>
                 </form>
                 <div class="foot">
-                    <a href="./index.html" class="">Already Have An Account?!!</a>
+                    <a href="./index.html" class="">لديك حساب بالفعل؟</a>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        const checker = document.getElementsByClassName('input');
-        if (checker.length() > 2) {
-            alert('OTP Field Must Be Max. 1 Digite');
-        }
+        const otpInputs = document.querySelectorAll('.opt-input');
+
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', () =>{
+                if (input.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+        });
     </script>
 </body>
-
 </html>
